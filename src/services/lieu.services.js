@@ -6,6 +6,7 @@ const LieuService = {
     getAll: () => {
         // Renvoi la copie de donnée transformé
         return lieux.map(lieu => ({
+            id : lieu.id,
             name: lieu.name,
         }));
     },

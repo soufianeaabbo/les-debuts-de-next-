@@ -14,7 +14,7 @@ export default function locationPage(){
                 {
                     lieux.map((e) => (
                         
-                            <h2 className="">{e.name}</h2>
+                            <a href={`http://localhost:3000/lieux/detail/${e.id}`}> {e.name} </a>
                         
                     ))
                 }
