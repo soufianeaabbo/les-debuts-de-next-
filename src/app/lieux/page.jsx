@@ -1,23 +1,26 @@
-import LieuService from "@/services/lieu.services"
+
+import { Suspense } from 'react';
+import ListLieux from './listlieux';
+import FleurLoadingPage from './loading';
 
 
-export default function locationPage(){
+export default async function locationPage(){
 
-    const lieux = LieuService.getAll()
+    
 
     return (
         <section>
-            
+
+
             <h1>la page des lieux</h1>
 
+
+
             <div className="flex flex-col gap-2">
-                {
-                    lieux.map((e) => (
-                        
-                            <a href={`http://localhost:3000/lieux/detail/${e.id}`}> {e.name} </a>
-                        
-                    ))
-                }
+                <Suspense fallback={<FleurLoadingPage/> }>
+                {/* suspense attend toujours un composant */}
+                    <ListLieux/>
+                </Suspense>
             </div>
             
 

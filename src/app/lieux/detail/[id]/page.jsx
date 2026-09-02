@@ -1,8 +1,10 @@
 import LieuService from '@/services/lieu.services';
 import { notFound } from 'next/navigation';
+import { Suspense } from 'react';
+import Detaillieu from './detaillieu';
 
 
-// /plante/detail/:id
+// /lieux/detail/:id
 export default async function LieuDetailPage({ params }) {
 
     // Récuperation de la valeur de l'id (Route dynamique)
@@ -18,8 +20,12 @@ export default async function LieuDetailPage({ params }) {
  
     return (
         <main className='p-3'>
-            <h1 className='text-3xl'>Détail de {lieu.name} {lieu.address.city} {lieu.address.country} </h1>
-            <p>adresse: {lieu.address.street}</p>
+
+            <Suspense fallback="ça charge attend un peu">
+                <Detaillieu params={params}></Detaillieu>
+            </Suspense>
+            {/* <h1 className='text-3xl'>Détailffffff de {lieu.name} {lieu.address.city} {lieu.address.country} </h1>
+            <p>adresse: {lieu.address.street}</p> */}
         </main>
     );
 }
